@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 # import the library
 from RpiMotorLib import RpiMotorLib
     
-GpioPins = [18, 23, 24, 25]
+GpioPins = [12, 16, 18, 22]
 
 # Declare an named instance of class pass a name and type of motor
 mymotortest = RpiMotorLib.BYJMotor("MyMotorOne", "Nema")
