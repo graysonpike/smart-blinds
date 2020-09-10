@@ -2,7 +2,8 @@ import time
 import RPi.GPIO as GPIO
 from RpiMotorLib import RpiMotorLib
     
-GpioPins = [18, 23, 24, 25]
+GPIO_PINS = [18, 23, 24, 25]
+GPIO_INIT_WAIT = 0.01
 
 
 def step(steps, interstep_delay):
@@ -12,9 +13,9 @@ def step(steps, interstep_delay):
     time.sleep(0.5)
 
     if steps > 0:
-        motor.motor_run(GpioPins, 0.1, steps, False, False, "full", interstep_delay)
+        motor.motor_run(GPIO_PINS, interstep_delay, steps, False, False, "full", GPIO_INIT_WAIT)
     else:
-        motor.motor_run(GpioPins, 0.1, -steps, True, False, "half", interstep_delay)
+        motor.motor_run(GPIO_PINS, interstep_delay, -steps, True, False, "half", GPIO_INIT_WAIT)
 
 
     GPIO.cleanup()
