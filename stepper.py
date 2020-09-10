@@ -1,19 +1,16 @@
 import time 
 import RPi.GPIO as GPIO
-
-# This code snippet is for Version 1.2 
-
-# import the library
 from RpiMotorLib import RpiMotorLib
     
-GpioPins = [12, 16, 18, 22]
+GpioPins = [18, 23, 24, 25]
 
-# Declare an named instance of class pass a name and type of motor
-mymotortest = RpiMotorLib.BYJMotor("MyMotorOne", "Nema")
-time.sleep(0.5)
 
-# call the function pass the parameters
-mymotortest.motor_run(GpioPins , 0.1, 50, False, False, "half", .05)
+def adjust(steps, interstep_delay):
+    motor = RpiMotorLib.BYJMotor("BlindsStepper", "Nema")
 
-# good practise to cleanup GPIO at some point before exit
-GPIO.cleanup()
+    # TODO: Test removing this line
+    time.sleep(0.5)
+
+    motor.motor_run(GpioPins, 0.1, steps, False, False, "half", interstep_delay)
+
+    GPIO.cleanup()
