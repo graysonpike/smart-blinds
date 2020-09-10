@@ -11,6 +11,10 @@ def adjust(steps, interstep_delay):
     # TODO: Test removing this line
     time.sleep(0.5)
 
-    motor.motor_run(GpioPins, 0.1, steps, False, False, "half", interstep_delay)
+    if steps > 0:
+        motor.motor_run(GpioPins, 0.1, steps, False, False, "half", interstep_delay)
+    else:
+        motor.motor_run(GpioPins, 0.1, -steps, True, False, "half", interstep_delay)
+
 
     GPIO.cleanup()
