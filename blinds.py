@@ -10,7 +10,7 @@ def get_state():
 
 
 def set_state(stepper_position):
-    with open("state.json") as file:
+    with open("state.json", 'w') as file:
         return json.dump({"stepper_position": stepper_position}, file)
 
 
