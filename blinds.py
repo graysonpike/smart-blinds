@@ -1,6 +1,7 @@
 import os
+import json
 import stepper
-import config
+from config import get_config
 
 
 def get_state():
@@ -18,8 +19,8 @@ def get_stepper_position(position, config):
 
 
 def adjust(position):
-    config = config.get_config()
-    stepper_position = get_stepper_position(position)
+    config = get_config()
+    stepper_position = get_stepper_position(position, config)
     state = get_state()
     if state["stepper_position"] != stepper_position:
         steps = stepper_position - state["stepper_position"]
